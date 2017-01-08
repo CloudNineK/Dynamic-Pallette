@@ -13,8 +13,6 @@ def main():
     # Open GIF
     fName = sys.argv[1]
     outName = sys.argv[2]
-
-    # outName =
     im = Image.open(fName)
 
     # Create palette frames and append to list
@@ -27,7 +25,8 @@ def main():
     except EOFError:
         pass
 
-    frames[0].save(outName, save_all=True, append_images=frames[1:], loop=0)
+    frames[0].save(outName, save_all=True, append_images=frames[1:], loop=0,
+                   duration=im.info['duration'])
 
 
 def createFrame(image):
